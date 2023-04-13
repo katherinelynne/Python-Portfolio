@@ -7,6 +7,7 @@
 The company is UK based and it is a non-store online retailer. They sell mainly occasion gifts. Most of the customers are wholesalesrs who are both local and international. The transactions in this data set are between the date ranges of 12/1/2010 - 12/9/2011
 
 ## Where did the dataset come from?
+![image](https://user-images.githubusercontent.com/91401824/231877279-64c97173-11a7-4589-9c47-2da80d7f2076.png)
 
 
 ### Recommended Analysis from Maven Analytics:
