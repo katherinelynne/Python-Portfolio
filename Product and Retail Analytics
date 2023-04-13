@@ -147,9 +147,97 @@ plt.ylabel('Money spent (Dollar)')
 plt.title('Money Spent for Different Customers')
 plt.show()
 
-# Consolidate the number of sales made per customer
+# Consolidate the number of sales made per customer (Revenue)
 # We use index=False to indicate the groupby that we dont want to set the customer ID as index
+# Here, we can see how much money the highest spending customers actually spent overall
 spent_per_cust = df2.groupby(by=['CustomerID', 'Country'], as_index=False)['AmountSpent'].sum().sort_values(by='AmountSpent', ascending=False)
 spent_per_cust.columns = ['CustomerID', 'Country', "TotalSpent"]
 spent_per_cust.head(10)
+
+# Check our data and make sure evetything is okay
+df2.head()
+
+# Insert a new column as out 3rd row (index 2) with year_month by joining our yea with month from our InvoiceDate field
+# We take the year and multiply by 100 to get a 2010 format plus the month and because it acts like a string data type here it appends each other opposed to actually adding 12 to 2,010
+df2.insert(loc=2, column= 'year_month', value=df2['InvoiceDate'].map(lambda x: 100*x.year + x.month))
+
+# Insert a new column as our 6th column (index 5) with our Hour extracted from InvoiceDate
+df2.insert(loc=5, column='hour', value=df2.InvoiceDate.dt.hour)
+
+# Check to see if our year_month and hour columns were made
+df2.head()
+
+# Let's see number of orders per day of the week, this tells us the the 4th day of the week has the highest
+df2.groupby('InvoiceNo')['dayofweek'].unique().value_counts().sort_index()
+
+# Create a plot for the number of order per day of the week
+ax = df2.groupby('InvoiceNo')['dayofweek'].unique().value_counts().sort_index().plot('bar',color=color[0],figsize(15,6))
+ax.set_xlabel('Days',fontsize=15)
+ax.y_label('Number of Orders',fontsize=15)
+ax.set_title("Number of Orders by Days of the Week",fontsize=17)
+ax.set_xticklabels(('Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'), rotation='horizontal',fontsize=15)
+plt.show()
+
+df2.columns
+
+# Plotting the number of orders per hour (using our newly created 'hour' column)
+# This could be useful for a team who wants to know when a support analyst would be most needed at which points in the day
+ax = df2.groupby('InvoiceNo')['hour'].unique().value_counts().iloc[:-1].sort_index().plot('bar',color=color[0],figsize=(15,6))
+ax.set_xlabel('Hour',fontsize=15)
+ax.set_ylabel('Number of Orders',fontsize=15)
+ax.set_title('Number of Orders by Hour',fontsize=17)
+ax.set_xticklabels(range(6,12), rotation=horizontal,fontsize=15)
+plt.show()
+
+# Number of sales per week of the year
+ax = df2.groupby('InvoiceNo')['weekofyear'].unique().value_counts().iloc[:-1].sort_index().plot('bar',color=color[0],figsize(15,6))
+ax.set_xlabel('Hour',fontsize=15)
+ax.set_ylabel('Number of Orders Per Week of the Year',fontsize=15)
+ax.set_title('Number of Orders Per Week of the Year',fontsize=15)
+ax.set_xticklabels(range(0,52), rotation='horizontal', fontsize=15)
+plt.show()
+
+Analyze Unit Prices of our Items
+
+df2.UnitPrice.describe()
+
+# Check the distribution of unit price
+plt.subplots(figsize=(12,6))
+sns.boxplots(df2.UnitPrice)
+plt.show()
+
+# We know there are some free items so lets see those
+df_free_items = df2[.UnitPrice == 0]
+print(len(df_free_items))
+df_free_items.head()
+
+# See when these items were given out
+df_free_items.year_month.value_counts().sort_index()
+
+# Plotting the above
+ax = df_free_items.year_month.value_counts().sort_index().plot('bar',figsize=(12,6), color=color[0])
+ax.set_xlabel('Month',fontsize=15)
+ax.set_ylabel('Frequency',fontsize=15)
+ax.set_title('Frequency for different Months (Dec 2010 - Dec 2011'. fontsize=15)
+ax.set_xticklabels(('Dec_10', , 'Jan_11'), 'Feb_11', 'Mar_11','Apr_11','May_11','Jun_11','Jul_11','Aug_11','Sep_11','Oct_11','Nov_11'), rotation='horizontal',fontsize=15)))
+plt.show()
+
+On average, the company gave out 2-4 times FREE items to customers each month (Except in June2011)
+
+
+Analysis Per Country
+
+group_country_orders = df2.groupby('Country')['InvoiceDate'].count().sort_values()
+
+# Plot number of distinct customers in each country (with UK)
+plt.subplots(figsize=(15,8))
+group_country_orders.plot('barh',fontsize=12, color=color[0])
+plt.xlabel('Number of Orders', fontsize=12)
+plt.ylabel('Country',fontsize=12)
+plt.title('Number of Orders for Different Countries',fontsize=13)
+plt.show()
+
+
+
+
 
