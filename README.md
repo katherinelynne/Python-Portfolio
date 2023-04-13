@@ -4,7 +4,7 @@
 # Project 1: Product and Retail Analytics
 
 ## What is the purpose of this project? 
-
+The company is UK based and it is a non-store online retailer. They sell mainly occasion gifts. Most of the customers are wholesalesrs who are both local and international. The transactions in this data set are between the date ranges of 12/1/2010 - 12/9/2011
 
 ## Where did the dataset come from?
 
