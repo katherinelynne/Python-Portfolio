@@ -18,3 +18,138 @@ import datetime
 %matplotlib inline
 #Using ggplots style
 plt.style.use('ggplot')
+
+from matplotlib.cbook import file_requires_unicode
+
+# Loading our data
+# Specifying encoding to deal with different formats
+
+#df= pd.read.csv('./data/ecommerce/data.csv', encoding = 'ISO-8859-1')
+
+# Download and unzip the file
+from urllib.request import urlopen
+from zipfile import ZipFile
+
+zipurl='https://github.com/rajeevratan84/datascienceforbusiness/blob/master/ecommerce_data.zip?raw=true'
+zipresp = urlopen(zipurl) #Create a new file on the harddrive
+tempzip = open("/tmp/tempfile.zip", "wb") # Wite the contents of the downloaded file into the new file
+tempzip.write(zipresp.read()) # Close the newly created file
+tempzip.close() # re-open the newly-created file with ZipFile()
+zf = ZipFile("/tmp/tempfile.zip") # Extracts its contents into <extraction_path>
+zf.extractall(path = '') # note that extractall will automatically create the path, left blank so its in working directory
+# Close the ZipFile instance
+zf.close()
+
+df = pd.read_csv("ecommerce_data.csv", encoding='ISO-8859-1')
+
+# Check the info to make sure everything is correct
+# I find that InvoiceDate is an object and I want that to be a time data type
+df.info()
+
+# Check the missing values for each column
+df.isnull().sum().sort_values(ascending=False)
+
+# Checking the rows with missing values
+df[df.isnull().any(axis=1)].head(10)
+
+# Change the invoice_date format - String to timestamp format
+df['InvoiceDate'] = pd.to_datetime(df.InvoiceDate, format='%m/%d/%Y %H:%M')
+df.info()
+
+# Now lets do Time series operations
+# df_new without missing values
+df_no_missing = df.dropna()
+
+# Check missing values for each column
+df_no_missing.isnull().sum().sort_values(ascending=False)
+
+# Convert String to Int type because Customer ID doesnt need to be a float
+df_no_missing['CustomerID'] = df_no_missing['CustomerID'].astype('int64')
+df_no_missing.head()
+
+# Rename the dataframs to make code more readable
+df2 = df_no_missing.copy()
+df2.describe().round(2)
+
+# violin plot for quantities
+sns.set(style="whitegrid")
+ax = sns.violinplot(x=df2["Quantity"])
+
+We can see all of the data is centered in the middle but there are peaks on either side so maybe we can remove the negative values from the left side.
+
+# Remove negative quantities
+
+df2 = df2[df2.Quantity > 0]
+df2.describe().round(2)
+
+Now we see 1 as expected and there are no negative values. But lets double check with the violin plots.
+
+ax = sns.violinplot(x=df2["Quantity"])
+
+# Lets work out the amounts by creating a new column called "amount spent" and it multiplies unit price by quantitity.
+df2['AmountSpent'] = df2['Quantity'] * df2['UnitPrice']
+df2.head()
+
+# Adding Month Day and Hour columns that we will use for further analysis
+# Starting with Year_Month first
+# Take Invoice Date and extract the month and create a new field  
+df2['Year_Month'] = df2['InvoiceDate'].dt.to_period('M')
+df2.head()
+
+# Re-create new columns for the below. We're going to see some analysis on how much things have sold per month, day of week etc. so We need to create L first.
+# Below is getting the invoice date for each item below.
+# Run L through the below loop and then join it back together. 
+
+L = ['year', 'month', 'day', 'dayofweek', 'dayofyear', 'weekofyear', 'quarter']
+df2 = df2.join(pd.concat((getattr(df2['InvoiceDate'].dt, i).rename(i) for i in L), axis=1))
+df2.head()
+
+df2.dayofweek.unique()
+
+We can see above that day of week starts with 0 so Sunday is 0 and we will fix that later on. For now, lets check our data types.
+
+df2.info()
+
+# Now add 1 to each day of the week so Sunday can be 1
+df2['dayofweek'] = df2['dayofweek'] + 1
+df2.head()
+
+Sales and Revenue Analysis
+
+# Consolidating the number of Sales made per customer for each country
+# We use InvoiceNo as the count for Sales
+# We take our DF and group by customer ID and country, and we dont want to use the index, then we count invoice number
+# which counts as a sale and ascending=false will ensure the highest values appear first.
+sales_per_cust = df2.groupby(by=['CustomerID', 'Country'], as_index=False)['InvoiceNo'].count().sort_values(by='InvoiceNo', ascending=False)
+sales_per_cust.columns = ['CustomerID', 'Country', "NumberofSales"]
+sales_per_cust.head(10)
+
+# Visualizing number of sales for all customers
+
+orders = df2.groupby(by=['CustomerID', 'Country'], as_index=False)['InvoiceNo'].count()
+
+plt.subplots(figsize=(15,6))
+plt.plot(orders.CustomerID, orders.InvoiceNo)
+plt.xlabel('Customer ID')
+plt.ylabel('Number of Orders')
+plt.title('Number of Orders for different Customers')
+plt.show()
+
+Who are these people, who are the best customers? We can see these customers rank in height compared to other in terms of volume of sales. Volume of sales or number isnt the best way to look at this, we may want to see the amount spent per customer.
+
+# Visualizing money spent for all customers
+money_spent = df2.groupby(by=['CustomerID', 'Country'], as_index=False)['AmountSpent'].sum()
+
+plt.subplots(figsize=(15,6))
+plt.plot(money_spent.CustomerID, money_spent.AmountSpent)
+plt.xlabel('CustomerID')
+plt.ylabel('Money spent (Dollar)')
+plt.title('Money Spent for Different Customers')
+plt.show()
+
+# Consolidate the number of sales made per customer
+# We use index=False to indicate the groupby that we dont want to set the customer ID as index
+spent_per_cust = df2.groupby(by=['CustomerID', 'Country'], as_index=False)['AmountSpent'].sum().sort_values(by='AmountSpent', ascending=False)
+spent_per_cust.columns = ['CustomerID', 'Country', "TotalSpent"]
+spent_per_cust.head(10)
+
