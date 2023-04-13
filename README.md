@@ -1,7 +1,17 @@
 # Python-Portfolio
 
 
-# Project 1: 2020 US President Election Analysis
+# Project 1: Product and Retail Analytics
+
+## What is the purpose of this project? 
+
+
+## Where did the dataset come from?
+
+
+### Recommended Analysis from Maven Analytics:
+
+# Project 2: 2020 US President Election Analysis
 
 ## What is the purpose of this project? 
 
@@ -13,7 +23,7 @@
 
 
 
-# Project 2: Marketing Promotions
+# Project 3: Marketing Promotions
 
 ## What is the purpose of this project? 
 
