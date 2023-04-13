@@ -1,0 +1,20 @@
+#Below are the modules I will use for this data.
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+import warnings
+#The current version of seaborn generates a bunch of warnings that I'll ignore.
+warnings.filterwarnings('ignore')
+sns.set_style('whitegrid')
+
+#Import missingmno and name it msno this is the # of missing data visualization module for Python
+import pandas_profiling
+
+import gc
+import datetime
+
+%matplotlib inline
+#Using ggplots style
+plt.style.use('ggplot')
