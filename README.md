@@ -26,7 +26,7 @@ The company is UK based and it is a non-store online retailer. They sell mainly 
 # Project 3: Marketing Promotions
 
 ## What is the purpose of this project? 
-
+A fast-food chain is undecided between 3 possible marketing campaigns for promoting a new item to their menu. To determine which promotion was most effective, utilized python comparing the 3 different promotions in an A/B Test.
 
 ## Where did the dataset come from?
 
