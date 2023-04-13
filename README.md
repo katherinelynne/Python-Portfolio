@@ -8,6 +8,12 @@ The company is UK based and it is a non-store online retailer. They sell mainly 
 
 ## Where did the dataset come from?
 
+ax = df2.groupby('InvoiceNo')['weekofyear'].unique().value_counts().iloc[:-1].sort_index().plot('bar',color=color[0],figsize(15,6))
+ax.set_xlabel('Hour',fontsize=15)
+ax.set_ylabel('Number of Orders Per Week of the Year',fontsize=15)
+ax.set_title('Number of Orders Per Week of the Year',fontsize=15)
+ax.set_xticklabels(range(0,52), rotation='horizontal', fontsize=15)
+plt.show()
 
 ### Recommended Analysis from Maven Analytics:
 
