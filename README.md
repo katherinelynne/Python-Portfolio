@@ -26,16 +26,16 @@ This EDA is conducted using Python libraries such as pandas, matplotlib, and sea
 
 
 
-# Project 2: Marketing Promotions
+# Project 2: Marketing Analytics- What Drives Ad Performance?
 
 ## What is the purpose of this project? 
-A fast-food chain is undecided between 3 possible marketing campaigns for promoting a new item to their menu. To determine which promotion was most effective, utilized python comparing the 3 different promotions in an A/B Test.
+The purpose of this project is to see what drives Ad performace. 
 
 ## Where did the dataset come from?
 
 
 ### Recommended Analysis from Maven Analytics:
-
+A fast-food chain is undecided between 3 possible marketing campaigns for promoting a new item to their menu. To determine which promotion was most effective, utilized python comparing the 3 different promotions in an A/B Test.
 
 
 
