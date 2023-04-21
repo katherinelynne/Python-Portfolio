@@ -12,6 +12,10 @@ The dataset can be found at https://www.kaggle.com/datasets/carrie1/ecommerce-da
 ### Context from the data source on kaggle:
 "Typically e-commerce datasets are proprietary and consequently hard to find among publicly available data. However, The UCI Machine Learning Repository has made this dataset containing actual transactions from 2010 and 2011. The dataset is maintained on their site, where it can be found by the title "Online Retail". "
 
+This EDA is conducted using Python libraries such as pandas, matplotlib, and seaborn. After importing libraries and the data, I clean it and prepare it for analysis. I visualize sales data over time, product categories, and regions to start my exploration. Then I begin to answer specific business questions such as identifying the top selling products and regions, analyzing sales trends over time, and understanding the impact of promotions on sales. To conclude my analysis with some insights based on the plots I created.
+> My notebook features how to create interactive visualizations using the plotly library.
+
+
 # Project 2: 2020 US President Election Analysis
 
 ## What is the purpose of this project? 
