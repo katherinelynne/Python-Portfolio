@@ -1,6 +1,11 @@
 # Python-Portfolio
   >Below is an explanation of my projects.
 
+
+
+
+
+
 # Project 1: Product and Retail Analytics- EDA
 
 ## What is the purpose of this project? 
@@ -15,22 +20,13 @@ The dataset can be found at https://www.kaggle.com/datasets/carrie1/ecommerce-da
 
 
 This EDA is conducted using Python libraries such as pandas, matplotlib, and seaborn. After importing libraries and the data, I clean it and prepare it for analysis. I visualize sales data over time, product categories, and regions to start my exploration. Then I begin to answer specific business questions such as identifying the top selling products and regions, analyzing sales trends over time, and understanding the impact of promotions on sales. To conclude my analysis with some insights based on the plots I created.
-> My notebook features how to create interactive visualizations using the plotly library.
-
-
-# Project 2: 2020 US President Election Analysis
-
-## What is the purpose of this project? 
-
-
-## Where did the dataset come from?
-
-
-### Recommended Analysis from Maven Analytics:
 
 
 
-# Project 3: Marketing Promotions
+
+
+
+# Project 2: Marketing Promotions
 
 ## What is the purpose of this project? 
 A fast-food chain is undecided between 3 possible marketing campaigns for promoting a new item to their menu. To determine which promotion was most effective, utilized python comparing the 3 different promotions in an A/B Test.
@@ -39,3 +35,22 @@ A fast-food chain is undecided between 3 possible marketing campaigns for promot
 
 
 ### Recommended Analysis from Maven Analytics:
+
+
+
+
+
+
+
+
+
+# Project 3: 2020 US President Election Analysis
+
+## What is the purpose of this project? 
+
+
+## Where did the dataset come from?
+
+
+### Recommended Analysis from Maven Analytics:
+
