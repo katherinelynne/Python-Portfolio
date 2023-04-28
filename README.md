@@ -29,13 +29,16 @@ This EDA is conducted using Python libraries such as pandas, matplotlib, and sea
 # Project 2: Marketing Analytics- What Drives Ad Performance?
 
 ## What is the purpose of this project? 
-The purpose of this project is to see what drives Ad performace. 
+The purpose of this project is to see what drives Ad performace. Using predictive analytics to analyze a dataset of ad performance to make predictions about what factors drive engagement. I perform exploratory analysis then train regression models to make predictions and provide insight into what factors drive engagement for ads. Based on the coefficients of my regression model the factors that appear to have the strongest impact on engagement are the number of ad impressions and clicks, the ad category, the ad type, and the type of ad creative. 
+
+Based on those factors, the conclusions I came to were to increase engagement, ad campaigns should focus on ad impressions, advertisers should consider using videos in their ads which also appear to generate higher engagement. Advertisers should consider their target audience when creating ads, as certain types of ads appear to generate higher engagement that others. Overall, the factors that drive engagement in my analysis could provide valuable insight for an advertiser to help them optimize their ad campaigns to generate higher engagement. 
 
 ## Where did the dataset come from?
-
+A github user
+https://raw.githubusercontent.com/rajeevratan84/datascienceforbusiness/master/bank-full.csv
 
 ### Recommended Analysis from Maven Analytics:
-A fast-food chain is undecided between 3 possible marketing campaigns for promoting a new item to their menu. To determine which promotion was most effective, utilized python comparing the 3 different promotions in an A/B Test.
+
 
 
 
@@ -53,4 +56,4 @@ A fast-food chain is undecided between 3 possible marketing campaigns for promot
 
 
 ### Recommended Analysis from Maven Analytics:
-
+A fast-food chain is undecided between 3 possible marketing campaigns for promoting a new item to their menu. To determine which promotion was most effective, utilized python comparing the 3 different promotions in an A/B Test.
