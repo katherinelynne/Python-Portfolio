@@ -37,7 +37,7 @@ Based on those factors, the conclusions I came to were to increase engagement, a
 A github user
 https://raw.githubusercontent.com/rajeevratan84/datascienceforbusiness/master/bank-full.csv
 
-### Recommended Analysis from Maven Analytics:
+
 
 
 
@@ -54,6 +54,4 @@ https://raw.githubusercontent.com/rajeevratan84/datascienceforbusiness/master/ba
 
 ## Where did the dataset come from?
 
-
-### Recommended Analysis from Maven Analytics:
 
