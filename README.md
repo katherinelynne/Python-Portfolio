@@ -56,4 +56,4 @@ https://raw.githubusercontent.com/rajeevratan84/datascienceforbusiness/master/ba
 
 
 ### Recommended Analysis from Maven Analytics:
-A fast-food chain is undecided between 3 possible marketing campaigns for promoting a new item to their menu. To determine which promotion was most effective, utilized python comparing the 3 different promotions in an A/B Test.
+
