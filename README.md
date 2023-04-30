@@ -29,12 +29,14 @@ This EDA is conducted using Python libraries such as pandas, matplotlib, and sea
 # Project 2: Marketing Analytics- What Drives Ad Performance?
 
 ## What is the purpose of this project? 
-The purpose of this project is to see what drives Ad performace. Using predictive analytics to analyze a dataset of ad performance to make predictions about what factors drive engagement. I perform exploratory analysis then train regression models to make predictions and provide insight into what factors drive engagement for ads. Based on the coefficients of my regression model the factors that appear to have the strongest impact on engagement are the number of ad impressions and clicks, the ad category, the ad type, and the type of ad creative. 
+The purpose of this project is to see what drives Ad performace. Using predictive analytics to analyze a dataset of ad performance to make predictions about what factors drive engagement. I perform exploratory analysis then train regression models to make predictions and provide insight into what factors drive engagement for ads. Based on the decision tree, there are 2 main outcomes, the rest didn't have much of an impact because of how I built the decision model. What determines the success of a future campaign or what drove the ad performance was 1. the outcome of the previous ad campaign and 2. the duration of the campaign itself.
 
-Based on those factors, the conclusions I came to were to increase engagement, ad campaigns should focus on ad impressions, advertisers should consider using videos in their ads which also appear to generate higher engagement. Advertisers should consider their target audience when creating ads, as certain types of ads appear to generate higher engagement that others. Overall, the factors that drive engagement in my analysis could provide valuable insight for an advertiser to help them optimize their ad campaigns to generate higher engagement. 
+Those are the 2 things that matter the most using this decision tree which was a 3 level tree.
+
+Based on those factors, the conclusions I came to were to further analyze the previous as campaign and possibly revisit the decision tree to a 5 level treee to see if the outcomes change significantly. Perhaps it would be more informative to see if any other factors matter. Digging deeper to see if any more features are important. Also, duration of the ad campaign could be explored further to see if months long ad campaigns do better. 
 
 ## Where did the dataset come from?
-A github user
+A github user, using the below link:
 https://raw.githubusercontent.com/rajeevratan84/datascienceforbusiness/master/bank-full.csv
 
 
